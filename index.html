@@ -1,0 +1,2057 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAHORE ESTATE & BUILDERS (R) - Premium Real Estate in Lahore</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            /* Dark Modern Palette */
+            --bg-primary: #0F172A;
+            --bg-secondary: #1E293B;
+            --accent: #3B82F6;
+            --highlight: #22C55E;
+            --text-primary: #E2E8F0;
+            --text-secondary: #94A3B8;
+            --border: #334155;
+            --glass: rgba(30, 41, 59, 0.6);
+            --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            --shadow-hover: 0 35px 60px -12px rgba(0, 0, 0, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--glass);
+            border-top: 3px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(15, 23, 42, 0.1);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: var(--bg-secondary);
+            padding: 0.8rem 5%;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), var(--highlight));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--highlight));
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-primary);
+            transition: 0.3s;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: var(--bg-secondary);
+            padding: 5rem 2rem 2rem;
+            transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 2000;
+            backdrop-filter: blur(20px);
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu li {
+            margin: 1.5rem 0;
+        }
+
+        .mobile-menu a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            display: block;
+            padding: 0.5rem 0;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%230F172A" width="1200" height="800"/><path fill="%231E293B" d="M0 400Q200 200 400 400T800 400Q1000 600 1200 400V800H0Z"/><circle fill="%233B82F6" opacity="0.3" cx="300" cy="300" r="80"/><circle fill="%2322C55E" opacity="0.2" cx="900" cy="250" r="60"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.3) 0%, rgba(34, 197, 94, 0.2) 100%);
+            animation: gradientShift 8s ease infinite;
+        }
+
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                opacity: 0.8;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 0 2rem;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1.2s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), #1D4ED8);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* Section */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--bg-secondary);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .trust-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), var(--highlight));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            background: rgba(30, 41, 59, 0.9);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--accent), var(--highlight));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Properties Gallery - Enhanced with Real Images */
+        .properties {
+            background: var(--bg-secondary);
+        }
+
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            padding: 0.8rem 2rem;
+            background: var(--glass);
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .filter-tab:hover {
+            transform: translateY(-2px);
+        }
+
+        .filter-tab.active {
+            background: linear-gradient(135deg, var(--accent), #1D4ED8);
+            border-color: var(--accent);
+            color: white;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .property-card {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            height: 100%;
+            /* Equal height cards */
+        }
+
+        .property-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent);
+        }
+
+        .property-image {
+            height: 260px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1E293B 0%, #334155 100%);
+        }
+
+        .property-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .property-card:hover .property-image img {
+            transform: scale(1.1);
+        }
+
+        .property-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg,
+                    rgba(59, 130, 246, 0.85) 0%,
+                    rgba(34, 197, 94, 0.7) 50%,
+                    rgba(15, 23, 42, 0.9) 100%);
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 2;
+        }
+
+        .property-card:hover .property-image::before {
+            opacity: 1;
+        }
+
+        .property-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(15, 23, 42, 0.95));
+            padding: 2rem 1.5rem 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+            z-index: 3;
+        }
+
+        .property-card:hover .property-overlay {
+            transform: translateY(0);
+        }
+
+        .property-overlay-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease 0.1s;
+        }
+
+        .property-card:hover .property-overlay-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .property-overlay h3 {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .property-overlay .price {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--highlight), #16A34A);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .property-content {
+            padding: 1.8rem;
+        }
+
+        .property-price {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--highlight);
+            margin-bottom: 0.8rem;
+        }
+
+        .property-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .property-location {
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .property-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .feature-tag {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+
+        /* Reviews Section - Dots Carousel */
+        .reviews {
+            position: relative;
+        }
+
+        .reviews-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+
+        .review-wrapper {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            width: 300%;
+            /* 3 cards total */
+            height: 260px;
+            /* Fixed height for smooth transition */
+        }
+
+        .review-slide {
+            flex: 0 0 33.333%;
+            /* Each slide takes 1/3 width */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 1rem;
+        }
+
+        .review-card {
+            background: rgba(30, 41, 59, 0.9);
+            backdrop-filter: blur(30px);
+            padding: 3rem 2.5rem;
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            min-height: 220px;
+            width: 100%;
+            /* Full width of slide */
+            max-width: 380px;
+            /* Max width constraint */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid rgba(51, 65, 85, 0.6);
+            opacity: 0.6;
+            transform: scale(0.92);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .review-card.active {
+            opacity: 1;
+            transform: scale(1);
+            box-shadow: 0 40px 80px -20px rgba(59, 130, 246, 0.4);
+            border-color: rgba(59, 130, 246, 0.6);
+            background: rgba(30, 41, 59, 1);
+        }
+
+        .review-card:not(.active) {
+            pointer-events: none;
+            /* Disable interaction on inactive cards */
+        }
+
+        .stars {
+            color: #FBBF24;
+            font-size: 1.6rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.2rem;
+        }
+
+        .review-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: 1.15rem;
+            line-height: 1.6;
+            color: var(--text-primary);
+        }
+
+        .review-author {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--accent);
+            letter-spacing: 0.5px;
+        }
+
+        /* Dots Navigation */
+        .review-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 3rem;
+            padding: 1rem 0;
+        }
+
+        .dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(148, 163, 184, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .dot.active {
+            background: var(--accent);
+            transform: scale(1.3);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
+        }
+
+        .dot::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.4s ease;
+        }
+
+        .dot.active::after {
+            width: 28px;
+            height: 28px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--bg-secondary);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--accent);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--glass);
+            border-radius: 15px;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--highlight);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(34, 197, 94, 0.2);
+            border-radius: 50%;
+        }
+
+        .contact-form {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        /* Map */
+        .map-container {
+            height: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+        }
+
+        /* Floating Buttons */
+        .floating-buttons {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 1000;
+        }
+
+        .float-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+        }
+
+        .call-btn {
+            background: var(--highlight);
+        }
+
+        .float-btn:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-primary);
+            padding: 3rem 0 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            font-size: 1.3rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: var(--glass);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        @media (max-width: 1024px) {
+            .review-wrapper {
+                width: 300%;
+            }
+
+            .review-card {
+                max-width: 340px;
+                padding: 2.5rem 2rem;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu {
+                width: 80vw;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .properties-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .property-image {
+                height: 240px;
+            }
+
+            .filter-tabs {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.8rem;
+            }
+
+            .filter-tab {
+                width: 100%;
+                max-width: 300px;
+                padding: 1rem 2rem;
+                text-align: center;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .floating-buttons {
+                bottom: 1rem;
+                right: 1rem;
+            }
+
+            .float-btn {
+                width: 55px;
+                height: 55px;
+                font-size: 1.3rem;
+            }
+
+            .review-wrapper {
+                height: 240px;
+            }
+
+            .review-card {
+                max-width: 300px;
+                padding: 2.2rem 1.8rem;
+                min-height: 200px;
+                margin: 0;
+            }
+
+            .review-text {
+                font-size: 1.05rem;
+            }
+
+            .review-dots {
+                gap: 0.6rem;
+                margin-top: 2rem;
+            }
+
+            .dot {
+                width: 12px;
+                height: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 5%;
+            }
+
+            .properties-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .property-image {
+                height: 220px;
+            }
+
+            .property-content {
+                padding: 1.5rem;
+            }
+
+            .review-wrapper {
+                height: 220px;
+            }
+
+            .review-card {
+                max-width: 280px;
+                padding: 2rem 1.5rem;
+                min-height: 180px;
+            }
+
+            .review-text {
+                font-size: 1rem;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">LAHORE ESTATE & BUILDERS (R)</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#properties" class="nav-link">Properties</a></li>
+                <li><a href="#reviews" class="nav-link">Reviews</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="close-btn" id="closeBtn">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#properties">Properties</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Your Trusted Real Estate Partner in Lahore</h1>
+            <p>Buy, Sell, and Invest with Confidence</p>
+            <div class="cta-buttons">
+                <a href="#properties" class="btn btn-primary">
+                    <i class="fas fa-home"></i>
+                    View Properties
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-phone"></i>
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about fade-in">
+        <div class="container">
+            <h2 class="section-title">About Lahore Estate & Builders</h2>
+            <div class="about-content">
+                <div class="about-text slide-in-left">
+                    <h3>Premium Real Estate Services Since 2010</h3>
+                    <p>With over a decade of experience in Lahore's dynamic real estate market, we specialize in
+                        residential, commercial properties, and investment opportunities. Our expert team ensures
+                        seamless transactions and maximum returns.</p>
+                    <p>Trusted by thousands of satisfied clients, we combine market expertise with personalized service
+                        to deliver exceptional results.</p>
+                </div>
+                <div class="trust-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">4.9⭐</div>
+                        <div>
+                            <div>Rating</div>
+                            <div>(13 Reviews)</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div>
+                            <div>Happy Clients</div>
+                            <div>Since 2010</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">250+</div>
+                        <div>
+                            <div>Properties Sold</div>
+                            <div>This Year</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section fade-in">
+        <div class="container">
+            <h2 class="section-title">Our Premium Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>Property Buying</h3>
+                    <p>Find your dream home or investment property with our expert guidance and market insights.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tag"></i>
+                    </div>
+                    <h3>Property Selling</h3>
+                    <p>Maximize your property value with our proven marketing strategies and negotiation expertise.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Investment Consultancy</h3>
+                    <p>Strategic investment advice for high ROI opportunities in Lahore's growing real estate market.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Client Support</h3>
+                    <p>End-to-end support from property search to legal documentation and after-sales service.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Properties Gallery with Real Images -->
+    <section id="properties" class="section properties fade-in">
+        <div class="container">
+            <h2 class="section-title">Featured Properties</h2>
+            <div class="filter-tabs">
+                <div class="filter-tab active" data-filter="all">All Properties</div>
+                <div class="filter-tab" data-filter="residential">Residential</div>
+                <div class="filter-tab" data-filter="commercial">Commercial</div>
+                <div class="filter-tab" data-filter="plots">Plots</div>
+            </div>
+            <div class="properties-grid">
+                <!-- Residential 1 -->
+                <div class="property-card" data-type="residential">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                            alt="Luxury Villa" loading="lazy">
+                    </div>
+                    <div class="property-overlay">
+                        <div class="property-overlay-content">
+                            <h3>3 Bed Luxury Villa</h3>
+                            <div class="price">PKR 2.5 Crore</div>
+                        </div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">PKR 2.5 Crore</div>
+                        <div class="property-title">3 Bed Luxury Villa - DHA Phase 7</div>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> DHA Phase 7, Lahore
+                        </div>
+                        <div class="property-features">
+                            <span class="feature-tag">3 Beds</span>
+                            <span class="feature-tag">4 Baths</span>
+                            <span class="feature-tag">Garden</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Commercial -->
+                <div class="property-card" data-type="commercial">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                            alt="Commercial Plaza" loading="lazy">
+                    </div>
+                    <div class="property-overlay">
+                        <div class="property-overlay-content">
+                            <h3>Prime Plaza</h3>
+                            <div class="price">PKR 8 Crore</div>
+                        </div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">PKR 8 Crore</div>
+                        <div class="property-title">Gulberg Commercial Plaza</div>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Gulberg III, Lahore
+                        </div>
+                        <div class="property-features">
+                            <span class="feature-tag">5 Floors</span>
+                            <span class="feature-tag">Parking</span>
+                            <span class="feature-tag">Prime Location</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plot -->
+                <div class="property-card" data-type="plots">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                            alt="Land Plot" loading="lazy">
+                    </div>
+                    <div class="property-overlay">
+                        <div class="property-overlay-content">
+                            <h3>1 Kanal Plot</h3>
+                            <div class="price">PKR 1.2 Crore</div>
+                        </div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">PKR 1.2 Crore</div>
+                        <div class="property-title">1 Kanal Prime Plot</div>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Bahria Town, Lahore
+                        </div>
+                        <div class="property-features">
+                            <span class="feature-tag">1 Kanal</span>
+                            <span class="feature-tag">Corner</span>
+                            <span class="feature-tag">Ready to Build</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Residential 2 -->
+                <div class="property-card" data-type="residential">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                            alt="Penthouse" loading="lazy">
+                    </div>
+                    <div class="property-overlay">
+                        <div class="property-overlay-content">
+                            <h3>4 Bed Penthouse</h3>
+                            <div class="price">PKR 1.8 Crore</div>
+                        </div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">PKR 1.8 Crore</div>
+                        <div class="property-title">4 Bed Luxury Penthouse</div>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Valencia Town, Lahore
+                        </div>
+                        <div class="property-features">
+                            <span class="feature-tag">4 Beds</span>
+                            <span class="feature-tag">Terrace</span>
+                            <span class="feature-tag">Penthouse</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Commercial 2 -->
+                <div class="property-card" data-type="commercial">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1558618047-3c8c76fdd9f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80"
+                            alt="Office Building" loading="lazy">
+                    </div>
+                    <div class="property-overlay">
+                        <div class="property-overlay-content">
+                            <h3>Office Building</h3>
+                            <div class="price">PKR 3.5 Crore</div>
+                        </div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">PKR 3.5 Crore</div>
+                        <div class="property-title">5-Storey Office Building</div>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> MM Alam Road
+                        </div>
+                        <div class="property-features">
+                            <span class="feature-tag">5 Storeys</span>
+                            <span class="feature-tag">Lift</span>
+                            <span class="feature-tag">Furnished</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plot 2 -->
+                <div class="property-card" data-type="plots">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1558618085-9dd92d3bae36?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                            alt="Plot Land" loading="lazy">
+                    </div>
+                    <div class="property-overlay">
+                        <div class="property-overlay-content">
+                            <h3>10 Marla Plot</h3>
+                            <div class="price">PKR 85 Lac</div>
+                        </div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">PKR 85 Lac</div>
+                        <div class="property-title">10 Marla Corner Plot</div>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Wapda Town, Lahore
+                        </div>
+                        <div class="property-features">
+                            <span class="feature-tag">10 Marla</span>
+                            <span class="feature-tag">Corner Plot</span>
+                            <span class="feature-tag">Clear Title</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section - Dots Carousel -->
+    <section id="reviews" class="section fade-in">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <div class="reviews-container">
+                <div class="review-wrapper" id="reviewWrapper">
+                    <div class="review-slide">
+                        <div class="review-card active">
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <div class="review-text">"Best Real Estate Agent in Lahore! Professional service and
+                                exceptional market knowledge."</div>
+                            <div class="review-author">- Ahmed Khan</div>
+                        </div>
+                    </div>
+                    <div class="review-slide">
+                        <div class="review-card">
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <div class="review-text">"Best Real Estate Agency in Lahore. Smooth transaction and
+                                excellent support throughout."</div>
+                            <div class="review-author">- Sara Malik</div>
+                        </div>
+                    </div>
+                    <div class="review-slide">
+                        <div class="review-card">
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <div class="review-text">"Best Real Estate Agent in Pakistan. Perfect investment property
+                                with expert guidance."</div>
+                            <div class="review-author">- Faisal Ahmed</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-dots" id="reviewDots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact fade-in">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info slide-in-left">
+                    <h3>Visit Us Today</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <div>Wala Bazar Tokay Wali Gali</div>
+                            <div>Opposite Mansoorah Hospital, Multan Road, Lahore</div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <div>+92 300 4096913</div>
+                            <div>Call Now</div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <div>Mon - Sat: 9AM - 8PM</div>
+                            <div>Sunday: 10AM - 6PM</div>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/923004096913" class="btn btn-primary"
+                        style="margin-top: 1rem; width: fit-content;">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3328.123456789!2d74.298123!3d31.512345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDMwJzQ5LjIiTiA3NMKwMTcnNTIuNSJF!5e0!3m2!1sen!2s!4v1699999999999"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--accent);">Send us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label>Your Name</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea name="message" placeholder="Tell us about your requirements..."
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/923004096913" class="float-btn whatsapp-btn" target="_blank" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+923004096913" class="float-btn call-btn" title="Call Now">
+            <i class="fas fa-phone"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LAHORE ESTATE & BUILDERS (R)</h4>
+                    <p>Your Trusted Real Estate Partner in Lahore. Premium properties, expert guidance, maximum returns.
+                    </p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#properties">Properties</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Property Buying</a></li>
+                        <li><a href="#">Property Selling</a></li>
+                        <li><a href="#">Investment Advice</a></li>
+                        <li><a href="#">Market Analysis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li>Wala Bazar Tokay Wali Gali</li>
+                        <li>Opposite Mansoorah Hospital</li>
+                        <li>Multan Road, Lahore</li>
+                        <li><a href="tel:+923004096913">+92 300 4096913</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Lahore Estate & Builders (R). All rights reserved. | Designed & Developed with ❤️ By <a href="https://ahmernadeem-dev.vercel.app/" style="color: #E2E8F0;" target="_blank">Ahmer Nadeem</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.classList.add('hidden');
+            }, 1000);
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeBtn = document.getElementById('closeBtn');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close mobile menu when clicking on link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Smooth scrolling for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in, .slide-in-left').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Dots Carousel - Auto Scroll Only
+        function initReviewCarousel() {
+            const reviewWrapper = document.getElementById('reviewWrapper');
+            const reviewCards = document.querySelectorAll('.review-card');
+            const reviewDotsContainer = document.getElementById('reviewDots');
+            const totalReviews = reviewCards.length;
+            let currentReview = 0;
+            let autoScrollInterval;
+
+            // Create dots
+            function createDots() {
+                reviewDotsContainer.innerHTML = '';
+                reviewCards.forEach((_, index) => {
+                    const dot = document.createElement('div');
+                    dot.className = 'dot';
+                    if (index === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => goToReview(index));
+                    reviewDotsContainer.appendChild(dot);
+                });
+            }
+
+            // Update dots
+            function updateDots(index) {
+                const dots = document.querySelectorAll('.dot');
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+            }
+
+            // Go to specific review
+            function goToReview(index) {
+                currentReview = index;
+                reviewWrapper.style.transform = `translateX(-${index * 33.333}%)`;
+
+                // Update card states
+                reviewCards.forEach((card, i) => {
+                    card.classList.toggle('active', i === index);
+                });
+
+                updateDots(index);
+            }
+
+            // Next review (auto)
+            function nextReview() {
+                currentReview = (currentReview + 1) % totalReviews;
+                goToReview(currentReview);
+            }
+
+            // Initialize
+            createDots();
+
+            // Auto scroll every 4 seconds
+            autoScrollInterval = setInterval(nextReview, 4000);
+
+            // Pause on hover
+            const reviewsContainer = document.querySelector('.reviews-container');
+            reviewsContainer.addEventListener('mouseenter', () => {
+                clearInterval(autoScrollInterval);
+            });
+
+            reviewsContainer.addEventListener('mouseleave', () => {
+                autoScrollInterval = setInterval(nextReview, 4000);
+            });
+
+            // Touch/swipe support for mobile
+            let startX = 0;
+            reviewsContainer.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            });
+
+            reviewsContainer.addEventListener('touchend', (e) => {
+                const endX = e.changedTouches[0].clientX;
+                const diffX = startX - endX;
+
+                if (Math.abs(diffX) > 50) {
+                    if (diffX > 0) {
+                        nextReview();
+                    } else {
+                        currentReview = (currentReview - 1 + totalReviews) % totalReviews;
+                        goToReview(currentReview);
+                    }
+                }
+            });
+        }
+
+        // Initialize carousel when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initReviewCarousel);
+
+        // Contact Form
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Simulate form submission
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+                alert('Thank you! Your message has been sent. We will contact you soon.');
+                this.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+
+        // Enhanced Property Filter + Professional Modal
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const propertyCards = document.querySelectorAll('.property-card');
+
+        // Filter functionality (unchanged)
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                filterTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                const filterValue = tab.getAttribute('data-filter');
+
+                propertyCards.forEach((card, index) => {
+                    const cardType = card.getAttribute('data-type');
+
+                    if (filterValue === 'all' || cardType === filterValue) {
+                        card.style.display = 'block';
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(30px)';
+                        setTimeout(() => {
+                            card.style.transition = 'all 0.6s ease';
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 100 + (index * 50));
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(30px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 600);
+                    }
+                });
+            });
+        });
+
+        // Professional Property Modal
+        function createPropertyModal(title, price, location, imgSrc = '') {
+            // Remove existing modal if any
+            const existingModal = document.querySelector('.property-modal');
+            if (existingModal) {
+                existingModal.remove();
+            }
+
+            // Create modal overlay
+            const modalOverlay = document.createElement('div');
+            modalOverlay.className = 'property-modal-overlay';
+            modalOverlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(15, 23, 42, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        animation: modalFadeIn 0.4s ease;
+    `;
+
+            // Modal content
+            const modalContent = document.createElement('div');
+            modalContent.className = 'property-modal-content';
+            modalContent.style.cssText = `
+        background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95));
+        backdrop-filter: blur(30px);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        border-radius: 24px;
+        max-width: 500px;
+        width: 90%;
+        max-height: 90vh;
+        overflow-y: auto;
+        animation: modalSlideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.7);
+    `;
+
+            modalContent.innerHTML = `
+        <div style="padding: 2.5rem; text-align: center;">
+            <div style="position: absolute; top: 1.5rem; right: 1.5rem; font-size: 1.8rem; color: #94A3B8; cursor: pointer; z-index: 10000;" onclick="closePropertyModal()">&times;</div>
+            
+            ${imgSrc ? `
+                <div style="width: 100%; height: 250px; border-radius: 20px; overflow: hidden; margin-bottom: 2rem; box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
+                    <img src="${imgSrc}" alt="${title}" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            ` : ''}
+            
+            <h2 style="color: #E2E8F0; font-size: 2rem; font-weight: 800; margin-bottom: 1rem; background: linear-gradient(135deg, #22C55E, #16A34A); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                ${price}
+            </h2>
+            <h3 style="color: #E2E8F0; font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem;">${title}</h3>
+            <div style="color: #94A3B8; font-size: 1.1rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                📍 ${location}
+            </div>
+            
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+                <a href="tel:+923004096913" style="
+                    background: linear-gradient(135deg, #22C55E, #16A34A);
+                    color: white; 
+                    padding: 1.2rem 2.5rem; 
+                    border-radius: 50px; 
+                    text-decoration: none; 
+                    font-weight: 700;
+                    font-size: 1.1rem;
+                    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
+                    transition: all 0.3s ease;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                " onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                    📞 Call Now
+                </a>
+                <a href="https://wa.me/923004096913?text=Hi!%20I'm%20interested%20in%20${encodeURIComponent(title)}%20for%20${encodeURIComponent(price)}" style="
+                    background: linear-gradient(135deg, #25D366, #128C7E);
+                    color: white; 
+                    padding: 1.2rem 2.5rem; 
+                    border-radius: 50px; 
+                    text-decoration: none; 
+                    font-weight: 700;
+                    font-size: 1.1rem;
+                    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+                    transition: all 0.3s ease;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                " onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                    💬 WhatsApp
+                </a>
+            </div>
+            
+            <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(148, 163, 184, 0.3); text-align: center;">
+                <p style="color: #64748B; font-size: 0.95rem;">Contact Lahore Estate & Builders (R) for viewing and details</p>
+            </div>
+        </div>
+    `;
+
+            // Add animations
+            const style = document.createElement('style');
+            style.textContent = `
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes modalSlideIn {
+            from { 
+                opacity: 0; 
+                transform: scale(0.8) translateY(-30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: scale(1) translateY(0); 
+            }
+        }
+        .property-modal-overlay {
+            scroll-behavior: smooth;
+        }
+    `;
+            document.head.appendChild(style);
+
+            // Append to body
+            modalOverlay.appendChild(modalContent);
+            document.body.appendChild(modalOverlay);
+
+            // Close modal functions
+            window.closePropertyModal = function () {
+                modalOverlay.style.opacity = '0';
+                modalOverlay.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    modalOverlay.remove();
+                    document.body.style.overflow = 'auto';
+                }, 400);
+            };
+
+            // Close on overlay click
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) {
+                    closePropertyModal();
+                }
+            });
+
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Property click event
+        document.querySelectorAll('.property-card').forEach(card => {
+            card.addEventListener('click', function (e) {
+                e.stopPropagation();
+                const title = this.querySelector('.property-title').textContent;
+                const price = this.querySelector('.property-price').textContent;
+                const location = this.querySelector('.property-location').textContent;
+                const imgSrc = this.querySelector('img')?.src || '';
+
+                createPropertyModal(title, price, location, imgSrc);
+            });
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const modal = document.querySelector('.property-modal-overlay');
+                if (modal) {
+                    closePropertyModal();
+                }
+            }
+        });
+
+        // Navbar active link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add parallax effect to hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const speed = scrolled * 0.5;
+            hero.style.transform = `translateY(${speed}px)`;
+        });
+
+        // Button micro-interactions
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-3px) scale(1.02)';
+            });
+
+            btn.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Initialize first review
+        reviewCards[0].style.opacity = '1';
+    </script>
+</body>
+
+</html>
